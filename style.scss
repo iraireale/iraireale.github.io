@@ -19,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $times;
+  font: 18px/1.4 $serif;
   color: $darkGray;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $times;
+  font-family: $serif;
   color: $darkerGray;
   font-weight: bold;
 
@@ -69,7 +69,7 @@ p {
 }
 
 a {
-  color: $blue;
+  color: $green;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
