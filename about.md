@@ -6,6 +6,6 @@ permalink: /about/
 
 Un espacio en internet donde capaz pueda ser un poco más yo. 
 
-### Contact me
+### Contacto
 
 [yilr@tutanota.com](mailto:yilr@tutanota.com)
