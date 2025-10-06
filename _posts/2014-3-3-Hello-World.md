@@ -16,6 +16,6 @@ Una vez que podamos hacer eso, quizás entendamos por qué no funciona ni va a f
 Creo que todos sabemos que en este país hay una banda de dolores no elaborados: masculinidades de pibitos que se desarrollan entre el nopor y la presión de un ideal económico imposible, laburantes que tienen veinte emprendimientos y aun así no cubren el mes, patologías psicológicas que adquieren nuevas expresiones con las apuestas online, adolescentes que siguen en el closet y odian lo que sienten, mil formas del empleo en negro que nuestras doctrinas no contemplan y que producen nuevos sujetos políticos, etc. Si somos incapaces de hacer lugar a todo eso, dejamos el terreno libre a quienes sí lo hacen. Y ya deberíamos saber que no son tan estúpidos como pensábamos. En cambio, pareciera que a esta ala ilustrada del país se le olvidó lo que se cansó de leer en la universidad: que los afectos motorizan la política. 
 
 
-Notas
+### Notas
 
 (1) Marilina Bertoldi afirma en una nota periodística que su generación, la millenial, está atrapada en un sanguchito de fachos: la generación de sus viejos y la de los pibitos del 2000 en adelante.
