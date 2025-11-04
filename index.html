@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>backdoor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>backdoor</h1>
+    <nav>
+      <a href="#" id="home">home</a>
+      <a href="#" id="about">about</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    <!-- aquí se cargará dinámicamente el contenido -->
+  </main>
+
+  <script>
+    const content = document.getElementById('content');
+
+    const aboutHTML = `
+      <section>
+        <h2>sobre backdoor</h2>
+        <p>este espacio reúne textos de ficción y no ficción.</p>
+      </section>
+    `;
+
+    const posts = {
+      "ficción": [
+        { title: "el cuerpo", date: "12.10.2025", url: "posts/ficcion/el-cuerpo.html" },
+        { title: "la grieta", date: "20.10.2025", url: "posts/ficcion/la-grieta.html" }
+      ],
+      "no ficción": [
+        { title: "la política del tiempo", date: "25.10.2025", url: "posts/no-ficcion/la-politica-del-tiempo.html" },
+        { title: "notas sobre el agotamiento", date: "02.11.2025", url: "posts/no-ficcion/notas-sobre-el-agotamiento.html" }
+      ]
+    };
+
+    function showHome() {
+      content.innerHTML = `
+        <section>
+          <h2>ficción</h2>
+          <ul>
+            ${posts["ficción"].map(p => `<li><a href="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
+          </ul>
+        </section>
+        <section>
+          <h2>no ficción</h2>
+          <ul>
+            ${posts["no ficción"].map(p => `<li><a href="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
+          </ul>
+        </section>
+      `;
+    }
+
+    document.getElementById('home').addEventListener('click', showHome);
+    document.getElementById('about').addEventListener('click', () => {
+      content.innerHTML = aboutHTML;
+    });
+
+    // mostrar home por defecto al cargar
+    showHome();
+  </script>
+</body>
+</html>
