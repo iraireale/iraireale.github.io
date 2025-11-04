@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Configuramos las categorías que queremos mostrar
   const categorias = [
-    { nombre: "Ficción", carpeta: "ficcion" },
-    { nombre: "No ficción / Ensayística", carpeta: "no-ficcion" }
+    { nombre: "ficción", carpeta: "ficcion" },
+    { nombre: "no ficción", carpeta: "no-ficcion" }
   ];
 
   categorias.forEach(cat => {
