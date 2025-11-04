@@ -1,89 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&display=swap');
-
 body {
-  background-color: #f7f3e9; /* papel cálido */
-  font-family: 'Cormorant Garamond', serif;
-  color: #2a231c;
-  max-width: 760px;
-  margin: 60px auto;
-  padding: 0 20px;
-  line-height: 1.8;
-  font-size: 20px;
+  background-color: #fff8e7;
+  font-family: "Georgia", serif;
+  color: #2f2f2f;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.6;
 }
 
-h1, h2, h3 {
-  font-family: 'Cormorant Garamond', serif;
-  color: #1c1813;
-  margin-top: 1.5em;
+h1, h2 {
+  font-family: "Georgia", serif;
 }
 
-a {
-  color: #8b6b43;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #5c4227;
-  text-decoration: underline;
-}
-
-header {
+h1 {
+  font-size: 2rem;
   text-align: center;
-  margin-bottom: 50px;
-}
-
-header h1 {
-  font-size: 2.4em;
-  letter-spacing: 0.03em;
-  margin-bottom: 0.2em;
-}
-
-nav a {
-  margin: 0 10px;
-  font-weight: 500;
-  font-size: 1.05em;
+  margin-bottom: 0.5rem;
 }
 
 nav {
-  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-/* --- Listado de entradas --- */
-.post-list {
+nav a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: #5b4636;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
 }
 
-.post-list li {
-  margin-bottom: 2.5em;
-  border-left: 2px solid #d4c7a3;
-  padding-left: 12px;
+li {
+  margin-bottom: 0.75rem;
 }
 
-.post-title {
-  font-size: 1.4em;
-  font-weight: 600;
+a {
+  color: #40362a;
 }
 
-.post-date {
-  color: #7a6a57;
-  font-size: 0.95em;
-  margin-bottom: 0.4em;
-  display: block;
+a:hover {
+  color: #8c6b3d;
 }
 
-.post-description {
-  color: #4a3e2f;
-  font-style: italic;
-}
-
-/* --- Pie --- */
 footer {
   text-align: center;
-  font-size: 0.9em;
-  color: #6b5d4d;
-  margin-top: 80px;
-  padding-top: 40px;
-  border-top: 1px solid #d6ccb8;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #6a5a45;
 }
