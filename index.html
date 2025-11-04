@@ -1,28 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>backdoor</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>backdoor</h1>
+    <h1>backdoor</h1>    
     <nav>
-      <a href="index.html">inicio</a>
-      <a href="about.html">about</a>
+      <a href="index.html">Inicio</a>
+      <a href="ficcion.html">Ficción</a>
+      <a href="ensayo.html">Ensayo</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
-  <main id="posts-container">
-    <!-- El contenido se agregará automáticamente aquí -->
+  <main id="main-content">
+    <!-- Aquí se renderizarán las secciones de Ficción y Ensayo -->
   </main>
 
   <footer>
-    <p>&copy; 2025 | iraí lópez reale</p>
+    <p>© 2025 Backdoor</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Script: array de posts + función para renderizar -->
+  <script>
+    /* 
+      posts: lista única de objetos con:
+      - title: título a mostrar
+      - description: breve descripción
+      - date: fecha legible
+      - category: "ficcion" o "ensayo"
+      - url: ruta relativa al archivo HTML del post (ej: "posts/2025-11-04-mi-texto.html")
+    */
+    const posts = [
+      {
+        title: "La puerta que respira",
+        description: "Fragmentos de una fiebre dentro del sistema.",
+        date: "03 nov 2025",
+        category: "ficcion",
+        url: "posts/la-puerta-que-respira.html"
+      },
+      {
+        title: "El tiempo de los profetas",
+        description: "Sobre la política como forma de espera.",
+        date: "02 nov 2025",
+        category: "ensayo",
+        url: "posts/el-tiempo-de-los-profetas.html"
+      }
+      /* más posts aquí siguiendo el mismo formato */
+    ];
+
+    // Función que crea la vista de la página principal (dos secciones)
+    function renderIndex() {
+      const main = document.getElementById("main-content");
+
+      // Definimos las dos categorías y su título mostrado
+      const categorias = [
+        { key: "ficcion", label: "Ficción", page: "ficcion.html" },
+        { key: "ensayo",  label: "Ensayo",  page: "ensayo.html"  }
+      ];
+
+      categorias.forEach(cat => {
+        // Sección contenedora
+        const section = document.createElement("section");
+        section.className = "category-section";
+
+        // Título de la categoría como enlace a la página propia
+        const h2 = document.createElement("h2");
+        const link = document.createElement("a");
+        link.href = cat.page;              // al hacer clic vais a la página de categoría
+        link.textContent = cat.label;
+        h2.appendChild(link);
+        section.appendChild(h2);
+
+        // Contenedor breve de posts (solo mostramos 3 últimos por categoría para el index)
+        const container = document.createElement("div");
+        container.className = "post-list";
+
+        // Filtramos y ordenamos por fecha (si tus nombres de archivo/fecha siguen patrón yyyy-mm-dd, podés mejorar el orden)
+        const items = posts
+          .filter(p => p.category === cat.key)
+          .slice() // clone
+          .sort((a, b) => (new Date(b.date)) - (new Date(a.date))); // intenta ordenar por fecha si la fecha es parseable
+
+        // Mostramos hasta 5 items en el index para mantenerlo ordenado
+        items.slice(0, 5).forEach(post => {
+          const item = document.createElement("article");
+          item.className = "post-item";
+
+          // Estructura interna: título (link), fecha, descripción breve
+          item.innerHTML = `
+            <h3><a href="${post.url}">${post.title}</a></h3>
+            <p class="meta">${post.date}</p>
+            <p class="excerpt">${post.description}</p>
+          `;
+          container.appendChild(item);
+        });
+
+        // Si no hay posts, mostramos un aviso discreto
+        if (items.length === 0) {
+          const empty = document.createElement("p");
+          empty.className = "empty-note";
+          empty.textContent = "No hay publicaciones en esta categoría todavía.";
+          container.appendChild(empty);
+        }
+
+        // Link a "ver todo" en la página de categoría
+        const seeAll = document.createElement("p");
+        seeAll.className = "see-all";
+        seeAll.innerHTML = `<a href="${cat.page}">Ver todos en ${cat.label} →</a>`;
+
+        section.appendChild(container);
+        section.appendChild(seeAll);
+        main.appendChild(section);
+      });
+    }
+
+    // Ejecutamos la renderización al cargar
+    document.addEventListener("DOMContentLoaded", renderIndex);
+  </script>
 </body>
 </html>
