@@ -53,3 +53,23 @@ a {
 a:hover {
   color: #000;
 }
+
+/* estilos solo para páginas de posts */
+.post-page {
+  text-transform: none; 
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 1.05em;
+  margin-top: 40px;
+}
+
+.post-page h1 {
+  text-transform: none;
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+}
+
+.post-page p {
+  margin-bottom: 1em;
+}
+
