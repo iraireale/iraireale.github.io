@@ -73,3 +73,14 @@ a:hover {
   margin-bottom: 1em;
 }
 
+main p {
+  text-align: justify;     
+  text-indent: 1cm;         
+  line-height: 1.6;          
+  margin-bottom: 1em;       
+}
+
+/* No aplicar sangría a los párrafos que solo contienen la fecha o los títulos */
+main h1, main em {
+  text-indent: 0;
+}
