@@ -1,2 +1,0 @@
-### backdoor
-Un blog personal minimalista hecho con GitHub Pages.  
