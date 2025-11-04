@@ -1,68 +1,70 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>backdoor</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>backdoor</h1>
-    <nav>
-      <a href="#" id="home">home</a>
-      <a href="#" id="about">about</a>
-    </nav>
-  </header>
+<script>
+  const content = document.getElementById('content');
 
-  <main id="content">
-    <!-- aquí se cargará dinámicamente el contenido -->
-  </main>
+  const aboutHTML = `
+    <section>
+      <h2>sobre este blog</h2>
+      <p>este espacio reúne textos de ficción y no ficción.</p>
+    </section>
+  `;
 
-  <script>
-    const content = document.getElementById('content');
+  const posts = {
+    "ficción": [
+      { title: "el cuerpo", date: "12.10.2025", url: "posts/ficcion/el-cuerpo.html" },
+      { title: "la grieta", date: "20.10.2025", url: "posts/ficcion/la-grieta.html" }
+    ],
+    "no ficción": [
+      { title: "¿son estúpidos o algo parecido?", date: "25.10.2025", url: "posts/no-ficcion/son-estupidos-o-algo-parecido.html" }
+    ]
+  };
 
-    const aboutHTML = `
+  function showHome() {
+    content.innerHTML = `
       <section>
-        <h2>sobre este blog</h2>
-        <p>este espacio reúne textos de ficción y no ficción.</p>
+        <h2>ficción</h2>
+        <ul>
+          ${posts["ficción"].map(p => `<li><a href="#" data-url="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
+        </ul>
+      </section>
+      <section>
+        <h2>no ficción</h2>
+        <ul>
+          ${posts["no ficción"].map(p => `<li><a href="#" data-url="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
+        </ul>
       </section>
     `;
+  }
 
-    const posts = {
-      "ficción": [
-        { title: "el cuerpo", date: "12.10.2025", url: "posts/ficcion/el-cuerpo.html" },
-        { title: "la grieta", date: "20.10.2025", url: "posts/ficcion/la-grieta.html" }
-      ],
-      "no ficción": [
-        { title: "¿son estúpidos o algo parecido?", date: "25.10.2025", url: "posts/no-ficcion/son-estupidos-o-algo-parecido.html" },        
-      ]
-    };
-
-    function showHome() {
-      content.innerHTML = `
-        <section>
-          <h2>ficción</h2>
-          <ul>
-            ${posts["ficción"].map(p => `<li><a href="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
-          </ul>
-        </section>
-        <section>
-          <h2>no ficción</h2>
-          <ul>
-            ${posts["no ficción"].map(p => `<li><a href="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
-          </ul>
-        </section>
-      `;
+  async function loadPost(url) {
+    try {
+      const response = await fetch(url);
+      const html = await response.text();
+      content.innerHTML = `<div class="post-page">${html}</div>`;
+      window.scrollTo(0, 0);
+    } catch (error) {
+      content.innerHTML = "<p>Error al cargar el post.</p>";
     }
+  }
 
-    document.getElementById('home').addEventListener('click', showHome);
-    document.getElementById('about').addEventListener('click', () => {
-      content.innerHTML = aboutHTML;
-    });
-
-    // mostrar home por defecto al cargar
+  // eventos del menú principal
+  document.getElementById('home').addEventListener('click', (e) => {
+    e.preventDefault();
     showHome();
-  </script>
-</body>
-</html>
+  });
+
+  document.getElementById('about').addEventListener('click', (e) => {
+    e.preventDefault();
+    content.innerHTML = aboutHTML;
+  });
+
+  // delegación de eventos para los enlaces de posts
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('a[data-url]')) {
+      e.preventDefault();
+      loadPost(e.target.dataset.url);
+    }
+  });
+
+  // mostrar home por defecto
+  showHome();
+</script>
