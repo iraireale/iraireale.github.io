@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ensayo · Backdoor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Backdoor</h1>
+    <p class="subtitle">entrar por la puerta equivocada</p>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="ficcion.html">Ficción</a>
+      <a href="ensayo.html">Ensayo</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main id="category-content">
+    <h2>Ensayo</h2>
+    <div id="posts"></div>
+    <p><a href="index.html">← Volver al inicio</a></p>
+  </main>
+
+  <footer>© 2025 Backdoor · Tlon</footer>
+
+  <script>
+    // Pegá aquí el mismo array 'posts' que usás en index.html
+    const posts = [
+      { title: "La puerta que respira", description: "Fragmentos de una fiebre dentro del sistema.", date: "03 nov 2025", category: "ficcion", url: "posts/la-puerta-que-respira.html" },
+      { title: "El tiempo de los profetas", description: "Sobre la política como forma de espera.", date: "02 nov 2025", category: "ensayo", url: "posts/el-tiempo-de-los-profetas.html" }
+      // Agregá los demás posts aquí
+    ];
+
+    function renderCategory(catKey) {
+      const container = document.getElementById("posts");
+      const items = posts.filter(p => p.category === catKey)
+                         .slice()
+                         .sort((a,b) => (new Date(b.date)) - (new Date(a.date)));
+
+      if (items.length === 0) {
+        container.innerHTML = "<p>No hay posts en Ensayo todavía.</p>";
+        return;
+      }
+
+      items.forEach(post => {
+        const article = document.createElement("article");
+        article.className = "post-item";
+        article.innerHTML = `
+          <h3><a href="${post.url}">${post.title}</a></h3>
+          <p class="meta">${post.date}</p>
+          <p class="excerpt">${post.description}</p>
+        `;
+        container.appendChild(article);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => renderCategory("ensayo"));
+  </script>
+</body>
+</html>
