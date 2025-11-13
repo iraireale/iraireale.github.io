@@ -37,13 +37,7 @@
 
   function showHome() {
     content.innerHTML = `
-      <section>
-        <h2>ficción</h2>
-        <ul>
-          ${posts["ficción"].map(p => `<li><a href="#" data-url="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
-        </ul>
-      </section>
-      <section>
+          <section>
         <h2>no ficción</h2>
         <ul>
           ${posts["no ficción"].map(p => `<li><a href="#" data-url="${p.url}">${p.title}</a> (${p.date})</li>`).join('')}
